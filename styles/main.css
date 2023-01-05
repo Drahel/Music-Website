@@ -67,5 +67,44 @@ header{
     transition: .3s linear;
 }
 
+.playlist h4:hover{
+    color: rgba(255, 235, 205, 0.858);
+}
 
+.playlist h4 span{
+    position: relative;
+    margin-right: 35px;
+}
+
+.playlist h4 span::before{
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border: 2px solid rgba(250, 226, 160, 0.589);
+    border-radius: 50%;
+    top: -4px;
+    transition: .3s linear;
+}
+
+.playlist h4:hover span::before{
+    border: 2px solid rgba(255, 235, 205, 0.858);
+}
+
+.playlist h4 .fa-solid{
+    display: none;
+}
+
+.playlist .active{
+    color: blanchedalmond;
+}
+
+.playlist .active span{
+    display: none;
+}
+
+.playlist .active .fa-solid{
+    display: flex;
+    margin-right: 25px;
+}
 
