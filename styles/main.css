@@ -14,12 +14,14 @@ body{
 }
 
 header{
+    position: relative;
     width: 80%;
     height: 85%;
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 20px;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .menu-side{
@@ -193,14 +195,14 @@ header{
     position: absolute; 
     width: 50%;
     height: 100%;
-    background-color: pink;
+    background-color: #FC98AF;
     top: 0;
     transition: 1s linear;
 }
 
 .master-play .bar .dot{
     position: absolute;
-    background-color: pink;
+    background-color: #FC98AF;
     width: 5px;
     height: 5px;
     border-radius: 50%;
@@ -214,11 +216,11 @@ header{
     position: absolute;
     width: 13px;
     height: 13px;
-    border: 1px solid pink;
+    border: 1px solid #FC98AF;
     border-radius: 50%;
     left: -4.75px;
     top: -4.75px;
-    box-shadow: inset 0px 0px 3px pink;
+    box-shadow: inset 0px 0px 3px #FC98AF;
 }
 
 .master-play .bar input{
@@ -260,7 +262,7 @@ header{
 
 .master-play .vol .vol-bar{ 
     position: absolute;
-    background-color: pink;
+    background-color: #FC98AF;
     width: 50%;
     height: 100%;
     top: 0;
@@ -269,7 +271,7 @@ header{
 
 .master-play .vol .dot{
     position: absolute;
-    background-color: pink;
+    background-color: #FC98AF;
     width: 5px;
     height: 5px;
     border-radius: 50%;
@@ -283,11 +285,11 @@ header{
     position: absolute;
     width: 13px;
     height: 13px;
-    border: 1px solid pink;
+    border: 1px solid #FC98AF;
     border-radius: 50%;
     left: -4.75px;
     top: -4.75px;
-    box-shadow: inset 0px 0px 3px pink;
+    box-shadow: inset 0px 0px 3px #FC98AF;
 }
  
 .playlist{
@@ -407,6 +409,96 @@ header{
 .menu-song li .fa-regular{
     position: absolute;
     right: 15px;
+}
+
+.song-side{
+    z-index: 2;
+}
+
+.song-side::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    /* background-image: url("../resources/backgrounds/bg.png"); */
+    z-index: -1;
+}
+
+.song-side nav{
+    width: 90%;
+    height: 10%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.song-side nav ul{
+    display: flex;
+}
+
+.song-side nav ul li{
+    list-style: none; 
+    position: relative;
+    font-size: 13px;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: .2s linear;
+    color:  rgba(255, 235, 205, 0.658);
+    font-weight: 600;
+}
+
+.song-side nav ul li:hover{
+    color: rgba(255, 235, 205, 0.928);;
+}
+
+.song-side nav ul li:nth-child(1){
+    color: blanchedalmond; 
+}
+
+.song-side nav ul li span{
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    background-color: blanchedalmond; 
+    bottom: -5px;
+    left: 0;
+    border-radius: 20px;
+}
+
+.song-side nav .search{
+    position: relative;
+    width: 40%;
+    border-radius: 20px;
+    color: blanchedalmond; 
+}
+
+.song-side nav .search::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 235, 205, 0.658); 
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+.song-side nav .search .fa-solid{
+    font-size: 15px;
+    padding: 3px 0px 0px 10px;
+    color: blanchedalmond; 
+}
+
+.song-side nav .search input{
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0px 5px;
+    font-size: 14px;
+    color: #0D3D3B; 
+    font-weight: 600;
+    width: 85%;
 }
 
  
