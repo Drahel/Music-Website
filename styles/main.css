@@ -501,5 +501,49 @@ header{
     width: 85%;
 }
 
+.song-side .content{
+    width: 90%;
+    height: 30%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.song-side .content h1{
+   font-size: 25px;
+   font-weight: 600;
+   color: blanchedalmond; 
+}
+
+.song-side .content p{
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 235, 205, 0.658); 
+    margin: 5px;
+}
+
+.song-side .content .buttons{
+    margin-top: 15px;
+}
+
+.song-side .content .buttons button{
+    width: 130px;
+    height: 30px;
+    border: 2px solid #0D3D3B;
+    outline: none;
+    border-radius: 20px;
+    background: blanchedalmond; 
+    color: #0D3D3B; 
+    cursor: pointer;
+    transition: .3s linear;
+    font-weight: 600;
+}
+
+.song-side .content .buttons button:hover{
+   background: none;
+   color: blanchedalmond; 
+   font-weight: 600;
+}
+
+
  
 
