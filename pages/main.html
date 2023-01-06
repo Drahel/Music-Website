@@ -19,7 +19,7 @@
     <div class="menu-side">
       <h2>MellowMusic </h2>
       <div class="playlist">
-        <h4 class="active"><span></span><i style="font-size: 12px;" class="fa-solid fa-bars"></i> Playlist</h4>
+        <h4 class="active"><span></span><i style="font-size: 12px;" class="fa-solid fa-list-ul"></i> Playlist</h4>
         <h4><span></span><i style="font-size: 10px;" class="fa-solid fa-music"></i> Last Listening</h4>
         <h4><span></span><i style="font-size: 10px;" class="fa-solid fa-music"></i> Recommended</h4>
       </div>
@@ -87,6 +87,31 @@
         <div class="wave1"></div>
         <div class="wave1"></div>
         <div class="wave1"></div>
+      </div>
+      <img src="../resources/covers/Alan Walker - Faded.jpg" alt="error" id="poster-master-play">
+      <h5 id="title">
+        Faded
+        <div class="subtitle">Alan Walker</div>
+      </h5>
+      <div class="icon">
+        <i class="fa-solid shuffle fa-list-ul">next</i>
+        <i class="fa-solid fa-backward-step"></i>
+        <i class="fa-solid fa-play"></i>
+        <i class="fa-solid fa-forward-step"></i>
+        <i class="fa-solid fa-cloud-arrow-down" id="download-song"></i>
+      </div>
+      <span id="currentStart">0:00</span>
+      <div class="bar">
+        <input type="range" id="seek" min="0" max="100">
+        <div class="bar2" id="bar2"></div>
+        <div class="dot"></div>
+      </div>
+      <span id="currentEnd">0:30</span>
+      <div class="vol">
+        <i class="fa-solid fa-volume-low" id="vol-icon"></i>
+        <input type="range" min="0" max="100" id="vol">
+        <div class="vol-bar"></div>
+        <div class="dot" id="vol-dot"></div>
       </div>
     </div>
   </header>
