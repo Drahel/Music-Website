@@ -558,13 +558,7 @@ header{
     justify-content: space-between;
 }
 
-.song-side .popular-song .h4 .fa-solid:nth-child(1){
-    color: #FC98AF;
-    cursor: pointer;
-    transition: .3s linear;
-}
-
-.song-side .popular-song .h4 .fa-solid:nth-child(2){
+.song-side .popular-song .h4 .fa-solid{
     color: #FC98AF;
     cursor: pointer;
     transition: .3s linear;
@@ -642,6 +636,61 @@ header{
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.song-side .popular-artists{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 15px;
+    color: blanchedalmond; 
+}
+
+.song-side .popular-artists .h4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.song-side .popular-artists .h4 .fa-solid{
+    color: #FC98AF;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+.song-side .popular-artists .h4 .fa-solid:hover{
+    color: blanchedalmond; 
+}
+
+.song-side .popular-artists .item{
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    display: flex;
+    overflow: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.song-side .popular-artists .item::-webkit-scrollbar{
+    display: none;
+}
+
+.song-side .popular-artists .item li{
+    list-style-type: none;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.song-side .popular-artists .item li img{
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+}
+
 
 
  
