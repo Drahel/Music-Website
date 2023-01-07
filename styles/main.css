@@ -503,7 +503,7 @@ header{
 
 .song-side .content{
     width: 90%;
-    height: 30%;
+    height: 28%;
     margin: auto;
     padding-top: 20px;
 }
@@ -548,7 +548,7 @@ header{
     width: 90%;
     height: auto;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 10px;
     color: blanchedalmond; 
 }
 
@@ -570,7 +570,7 @@ header{
 
 .song-side .popular-song .pop-song{
     width: 100%;
-    height: 150px;
+    height: 140px;
     margin-top: 15px;
     display: flex;
     overflow: auto;
@@ -641,7 +641,7 @@ header{
     width: 90%;
     height: auto;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 0px;
     color: blanchedalmond; 
 }
 
@@ -664,7 +664,7 @@ header{
 .song-side .popular-artists .item{
     width: 100%;
     height: auto;
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
     overflow: auto;
     overflow-y: hidden;
