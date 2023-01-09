@@ -376,6 +376,10 @@ header{
     background-color: rgb(252,152,175);
 }
 
+.activeSong{
+    background-color: rgb(252,152,175);
+}
+
 .menu-song li span{
     font-size: 12px;
     font-weight: 600;
