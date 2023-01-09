@@ -1,4 +1,4 @@
-const music = new Audio('../resources/songs/Alan Walker - On My Way.mp3');
+const music = new Audio('../resources/songs/1.mp3');
 // music.play();
 
 const songs = [
@@ -6,19 +6,19 @@ const songs = [
         id: '1',
         songName: `On My Way<br>
         <div class="subtitle">Alan Walker</div>`,
-        poster: "../resources/covers/Alan Walker - On My Way.png"
+        poster: "../resources/covers/1.jpg"
     },
     {
         id: '2',
         songName: `Faded<br>
         <div class="subtitle">Alan Walker</div>`,
-        poster: "../resources/covers/Alan Walker - Faded.jpg"
+        poster: "../resources/covers/2.jpg"
     },
     {
         id: '3',
         songName: `DRIFTING<br>
         <div class="subtitle">NF</div>`,
-        poster: "../resources/covers/NF - DRIFTING.jpg"
+        poster: "../resources/covers/3.jpg"
     }
 ]
 
@@ -34,12 +34,40 @@ masterPlay.addEventListener('click', ()=>{
     if(music.paused || music.currentTime <= 0 ){
         music.play();
         wave.classList.add('active1');
+        masterPlay.classList.remove('fa-play');
+        masterPlay.classList.add('fa-pause');
     }
     else {
         music.pause();
         wave.classList.remove('active1');
+        masterPlay.classList.remove('fa-pause');
+        masterPlay.classList.add('fa-play');
     }
-})
+});
+
+let index = 0;
+let posterMasterPlay = document.querySelector('#poster-master-play');
+let title = document.getElementById('title');
+Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
+    e.addEventListener('click', (el) =>{
+        index = el.target.id;
+        music.src = `../resources/songs/${index}.mp3`;
+        posterMasterPlay.src = `../resources/covers/${index}.jpg`;
+        wave.classList.add('active1');
+        masterPlay.classList.remove('fa-play');
+        masterPlay.classList.add('fa-pause');
+        music.play();
+
+        let songTitles = songs.filter((els) => {
+            return els.id == index;
+        });
+
+        songTitles.forEach(elss => {
+            let {songName} = elss;
+            title.innerHTML = songName;
+        })
+    })
+});
 
 let popSongLeft = document.getElementById('pop-song-left');
 let popSongRight = document.getElementById('pop-song-right');
