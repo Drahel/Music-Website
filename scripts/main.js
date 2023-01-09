@@ -4,27 +4,27 @@ const music = new Audio('../resources/songs/1.mp3');
 const songs = [
     {
         id: '1',
-        songName: `On My Way<br>
-        <div class="subtitle">Alan Walker</div>`,
+        songName: 'On My Way',
+        songAuthor:'Alan Walker',
         poster: "../resources/covers/1.jpg"
     },
     {
         id: '2',
-        songName: `Faded<br>
-        <div class="subtitle">Alan Walker</div>`,
+        songName: 'Faded',
+        songAuthor:'Alan Walker',
         poster: "../resources/covers/2.jpg"
     },
     {
         id: '3',
-        songName: `DRIFTING<br>
-        <div class="subtitle">NF</div>`,
+        songName: 'DRIFTING',
+        songAuthor:'NF',
         poster: "../resources/covers/3.jpg"
     }
 ]
 
 Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
     e.getElementsByTagName('img')[0].src = songs[i].poster;
-    e.getElementsByTagName('h5')[0].innerHTML = songs[i].songName;
+    e.getElementsByTagName('h5')[0].innerHTML = songs[i].songName +'<br><div class="subtitle">'+ songs[i].songAuthor +'</div>';
 })
 
 let masterPlay = document.getElementById('masterPlay');
@@ -67,11 +67,12 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((el) => {
         el.classList.remove('fa-circle-play');
         previousActiveIcon = el;
     })
-})
+});
 
 let index = 1;
 let posterMasterPlay = document.querySelector('#poster-master-play');
 let title = document.getElementById('title');
+let downloadSong = document.getElementById('download-song');
 Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
     e.addEventListener('click', (el) =>{
         index = el.target.id;
@@ -80,6 +81,7 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
         wave.classList.add('active1');
         masterPlay.classList.remove('fa-play');
         masterPlay.classList.add('fa-pause');
+        downloadSong.href = `../resources/songs/${index}.mp3`
         music.play();
 
         let songTitles = songs.filter((els) => {
@@ -87,9 +89,10 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
         });
 
         songTitles.forEach(elss => {
-            let {songName, poster} = elss;
-            title.innerHTML = songName;
+            let {songName,songAuthor, poster} = elss;
+            title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
             posterMasterPlay.src = poster;
+            downloadSong.setAttribute('download', songAuthor + ' - ' + songName);
         });
     });
 });
@@ -176,8 +179,8 @@ back.addEventListener('click', ()=>{
     });
 
     songTitles.forEach(elss => {
-        let {songName, poster} = elss;
-        title.innerHTML = songName;
+        let {songName,songAuthor, poster} = elss;
+        title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
         posterMasterPlay.src = poster;
     });
 });
@@ -199,8 +202,8 @@ next.addEventListener('click', ()=>{
     });
 
     songTitles.forEach(elss => {
-        let {songName, poster} = elss;
-        title.innerHTML = songName;
+        let {songName,songAuthor, poster} = elss;
+        title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
         posterMasterPlay.src = poster;
     });
 });
