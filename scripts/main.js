@@ -94,6 +94,41 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
     });
 });
 
+let currentStart = document.getElementById('currentStart');
+let currentEnd = document.getElementById('currentEnd');
+let seek = document.getElementById('seek');
+let musicBar = document.getElementById('musicBar');
+let musicDot = document.getElementById('musicDot');
+music.addEventListener('timeupdate', () =>{
+    let musicTime = music.currentTime;
+    let musicDuration = music.duration;
+    let min1 = Math.floor(musicDuration / 60);
+    let sec1 = Math.floor(musicDuration % 60);
+    if(sec1 < 10){
+        sec1 = `0${sec1}`;
+    }
+    
+    currentEnd.innerText = `${min1}:${sec1}`;
+
+    let min2 = Math.floor(musicTime / 60);
+    let sec2 = Math.floor(musicTime % 60);
+    if(sec2 < 10){
+        sec2 = `0${sec2}`;
+    }
+
+    currentStart.innerText = `${min2}:${sec2}`;
+
+    let progressBar = parseInt((musicTime / musicDuration) * 100);
+    seek.value = progressBar;
+    let seekBar = seek.value;
+    musicBar.style.width = `${seekBar}%`;
+    musicDot.style.left = `${seekBar}%`;
+});
+
+seek.addEventListener('change', () =>{
+    music.currentTime = seek.value * music.duration / 100;
+});
+
 let popSongLeft = document.getElementById('pop-song-left');
 let popSongRight = document.getElementById('pop-song-right');
 let popSong = document.querySelector('.pop-song');
