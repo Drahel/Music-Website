@@ -69,7 +69,7 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((el) => {
     })
 })
 
-let index = 0;
+let index = 1;
 let posterMasterPlay = document.querySelector('#poster-master-play');
 let title = document.getElementById('title');
 Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
@@ -155,6 +155,55 @@ vol.addEventListener('change', () =>{
     volumeDot.style.left = `${volA}%`;
     music.volume = volA / 100;
 })
+
+let back = document.getElementById('back');
+let next = document.getElementById('next');
+
+back.addEventListener('click', ()=>{
+    index -=1;
+    if(index < 1){
+        index = Array.from(document.getElementsByClassName('songItem')).length;
+    }
+    music.src = `../resources/songs/${index}.mp3`;
+    // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
+    wave.classList.add('active1');
+    masterPlay.classList.remove('fa-play');
+    masterPlay.classList.add('fa-pause');
+    music.play();
+
+    let songTitles = songs.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName, poster} = elss;
+        title.innerHTML = songName;
+        posterMasterPlay.src = poster;
+    });
+});
+
+next.addEventListener('click', ()=>{
+    index++;
+    if(index > Array.from(document.getElementsByClassName('songItem')).length){
+        index = 1;
+    }
+    music.src = `../resources/songs/${index}.mp3`;
+    // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
+    wave.classList.add('active1');
+    masterPlay.classList.remove('fa-play');
+    masterPlay.classList.add('fa-pause');
+    music.play();
+
+    let songTitles = songs.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName, poster} = elss;
+        title.innerHTML = songName;
+        posterMasterPlay.src = poster;
+    });
+});
 
 let popSongLeft = document.getElementById('pop-song-left');
 let popSongRight = document.getElementById('pop-song-right');
