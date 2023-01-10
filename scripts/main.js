@@ -1,5 +1,4 @@
 const music = new Audio('../resources/songs/1.mp3');
-// music.play();
 
 const songs = [
     {
@@ -77,7 +76,6 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
     e.addEventListener('click', (el) =>{
         index = el.target.id;
         music.src = `../resources/songs/${index}.mp3`;
-        // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
         wave.classList.add('active1');
         masterPlay.classList.remove('fa-play');
         masterPlay.classList.add('fa-pause');
@@ -168,7 +166,6 @@ back.addEventListener('click', ()=>{
         index = Array.from(document.getElementsByClassName('songItem')).length;
     }
     music.src = `../resources/songs/${index}.mp3`;
-    // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
     wave.classList.add('active1');
     masterPlay.classList.remove('fa-play');
     masterPlay.classList.add('fa-pause');
@@ -191,7 +188,6 @@ next.addEventListener('click', ()=>{
         index = 1;
     }
     music.src = `../resources/songs/${index}.mp3`;
-    // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
     wave.classList.add('active1');
     masterPlay.classList.remove('fa-play');
     masterPlay.classList.add('fa-pause');
@@ -214,11 +210,11 @@ let popSong = document.querySelector('.pop-song');
 
 popSongRight.addEventListener('click', ()=>{
     popSong.scrollLeft += 110;
-})
+});
 
 popSongLeft.addEventListener('click', ()=>{
     popSong.scrollLeft -= 110;
-})
+});
 
 let popArtLeft = document.getElementById('pop-art-left');
 let popArtRight = document.getElementById('pop-art-right');
@@ -226,8 +222,112 @@ let popArt = document.querySelector('.pop-art');
 
 popArtRight.addEventListener('click', ()=>{
     popArt.scrollLeft += 80;
-})
+});
 
 popArtLeft.addEventListener('click', ()=>{
     popArt.scrollLeft -= 80;
-})
+});
+
+let shuffle = document.getElementsByClassName('shuffle')[0];
+
+shuffle.addEventListener('click', () => {
+    let a = shuffle.dataset.aim;
+
+    switch (a) {
+        case "next":
+            shuffle.classList.add('fa-repeat');
+            shuffle.classList.remove('fa-shuffle');
+            shuffle.classList.remove('fa-list-ul');
+            shuffle.dataset.aim = 'repeat';
+            break;
+        case "repeat":
+            shuffle.classList.add('fa-shuffle');
+            shuffle.classList.remove('fa-repeat');
+            shuffle.classList.remove('fa-list-ul');
+            shuffle.dataset.aim = 'random';
+            break;
+        case "random":
+            shuffle.classList.add('fa-list-ul');
+            shuffle.classList.remove('fa-repeat');
+            shuffle.classList.remove('fa-shuffle');
+            shuffle.dataset.aim = 'next';
+            break;    
+    }
+});
+
+const next_music = () => {
+    index++;
+    if(index > Array.from(document.getElementsByClassName('songItem')).length){
+        index = 1;
+    }
+    music.src = `../resources/songs/${index}.mp3`;
+    wave.classList.add('active1');
+    masterPlay.classList.remove('fa-play');
+    masterPlay.classList.add('fa-pause');
+    music.play();
+
+    let songTitles = songs.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName,songAuthor, poster} = elss;
+        title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
+        posterMasterPlay.src = poster;
+    });
+}
+
+const repeat_music = () => {
+    music.src = `../resources/songs/${index}.mp3`;
+    wave.classList.add('active1');
+    masterPlay.classList.remove('fa-play');
+    masterPlay.classList.add('fa-pause');
+    music.play();
+
+    let songTitles = songs.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName,songAuthor, poster} = elss;
+        title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
+        posterMasterPlay.src = poster;
+    });
+}
+
+const random_music = () => {
+    oldIndex = index;
+    while(oldIndex == index){
+        index = Math.floor((Math.random() * songs.length) + 1);
+    }
+    music.src = `../resources/songs/${index}.mp3`;
+    wave.classList.add('active1');
+    masterPlay.classList.remove('fa-play');
+    masterPlay.classList.add('fa-pause');
+    music.play();
+
+    let songTitles = songs.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName,songAuthor, poster} = elss;
+        title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
+        posterMasterPlay.src = poster;
+    });
+}
+
+music.addEventListener('ended', ()=>{
+    let order = shuffle.dataset.aim;
+    switch (order) {
+        case "next":
+            next_music();
+            break;
+        case "repeat":
+            repeat_music();
+            break;
+        case "random":
+            random_music();
+            break;           
+    }
+});
