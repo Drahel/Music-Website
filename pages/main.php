@@ -159,7 +159,7 @@
         <i class="fa-solid fa-backward-step" id="back"></i>
         <i class="fa-solid fa-play" id="masterPlay"></i>
         <i class="fa-solid fa-forward-step" id="next"></i>
-        <a href="" download id="download-song"><i class="fa-solid fa-cloud-arrow-down"></i></a>
+        <a href="../resources/songs/1.mp3" download="Alan Walker - On My Way" id="download-song"><i class="fa-solid fa-cloud-arrow-down"></i></a>
       </div>
       <span id="currentStart">0:00</span>
       <div class="bar">
