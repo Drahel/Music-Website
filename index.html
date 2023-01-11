@@ -1,22 +1,5 @@
 <?php
-    session_start();
-
-    include('pages/dbconnect.php');
-    $msg = false;
-    if (isset($_POST['user_name'])) {
-        $user_name = $_POST['user_name'];
-        $user_password = $_POST['user_password'];
-
-        $query = "select * from user where user = '".$user_name."' AND password = '".$user_password."' limit 1";
-        $result = mysqli_query($con, $query);
-
-        if (mysqli_num_rows($result) == 1) {
-            header('Location: pages/main.php');
-        } else {
-            $msg = "Incorrect Login or Password";
-        }
-        
-    }
+    include('php/index.php');
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +38,7 @@
                         <div class="check">
                             <input type="checkbox" name="" id=""><span>Remember Me.</span>
                         </div>
-                        <p>Don`t have an account yet?<a href="pages/signUp.php"> Sign Up</a></p>
+                        <p>Don`t have an account yet?<a href="pages/signUp.html"> Sign Up</a></p>
                     </form>
                 </div>
             </div>
