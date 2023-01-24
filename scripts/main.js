@@ -129,6 +129,33 @@ seek.addEventListener('change', () =>{
     music.currentTime = seek.value * music.duration / 100;
 });
 
+let volIcon = document.getElementById('vol-icon');
+let vol = document.getElementById('vol');
+let volumeBar = document.getElementById('volumeBar');
+let volumeDot = document.getElementById('volumeDot');
+
+vol.addEventListener('change', () =>{
+    if(vol.value == 0){
+        volIcon.classList.remove('fa-volume-high');
+        volIcon.classList.remove('fa-volume-low');
+        volIcon.classList.add('fa-volume-off');  
+    }
+    if(vol.value > 0){
+        volIcon.classList.remove('fa-volume-high');
+        volIcon.classList.add('fa-volume-low');
+        volIcon.classList.remove('fa-volume-off');  
+    }
+    if(vol.value > 50){
+        volIcon.classList.add('fa-volume-high');
+        volIcon.classList.remove('fa-volume-low');
+        volIcon.classList.remove('fa-volume-off');  
+    }
+    let volA = vol.value;
+    volumeBar.style.width = `${volA}%`;
+    volumeDot.style.left = `${volA}%`;
+    music.volume = volA / 100;
+})
+
 let popSongLeft = document.getElementById('pop-song-left');
 let popSongRight = document.getElementById('pop-song-right');
 let popSong = document.querySelector('.pop-song');
