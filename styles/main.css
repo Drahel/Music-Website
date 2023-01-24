@@ -192,7 +192,7 @@ header{
 
 .master-play .bar .bar2{
     position: absolute; 
-    width: 50%;
+    width: 0%;
     height: 100%;
     background-color: #FC98AF;
     top: 0;
