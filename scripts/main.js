@@ -26,6 +26,83 @@ Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
     e.getElementsByTagName('h5')[0].innerHTML = songs[i].songName +'<br><div class="subtitle">'+ songs[i].songAuthor +'</div>';
 })
 
+let searchResults = document.getElementsByClassName('search-results')[0];
+songs.forEach(el => {
+    const {id, songName, songAuthor, poster} = el;
+    let card = document.createElement('a');
+    card.classList.add('card');
+    card.href = '#'+ id;
+    card.innerHTML = `
+    <img src="${poster}" alt="">
+              <div class="content">
+                ${songName}
+                <div class="subtitle">${songAuthor}</div>
+              </div>`;
+    card.addEventListener('click', ()=>{
+        index = id;
+        music.src = `../resources/songs/${index}.mp3`;
+        wave.classList.add('active1');
+        masterPlay.classList.remove('fa-play');
+        masterPlay.classList.add('fa-pause');
+        downloadSong.href = `../resources/songs/${index}.mp3`
+        music.play();
+
+        let songTitles = songs.filter((els) => {
+            return els.id == index;
+        });
+
+        songTitles.forEach(elss => {
+            let {songName,songAuthor, poster} = elss;
+            title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
+            posterMasterPlay.src = poster;
+            downloadSong.setAttribute('download', songAuthor + ' - ' + songName);
+        });
+
+        if(previousActiveSong.classList.contains('activeSong')){
+            previousActiveSong.classList.remove('activeSong');
+        }
+        let el = document.getElementById(`${id}`);
+        let parent = el.closest('.songItem');
+        parent.classList.add('activeSong');
+        previousActiveSong = parent;
+
+        if(previousActiveIcon.classList.contains('fa-circle-pause')){
+            previousActiveIcon.classList.remove('fa-circle-pause');
+            previousActiveIcon.classList.add('fa-circle-play');
+        }
+
+        let icon = document.getElementById(`${id}`);
+        icon.classList.add('fa-circle-pause');
+        icon.classList.remove('fa-circle-play');
+        previousActiveIcon = icon;
+    });
+    searchResults.appendChild(card);
+})
+
+let input = document.getElementsByTagName('input')[0];
+
+input.addEventListener('keyup', ()=>{
+    let inputValue  = input.value.toUpperCase();
+    let items = searchResults.getElementsByTagName('a');
+    for (let index = 0; index < items.length; index++) {
+        let as = items[index].getElementsByClassName('content')[0];
+        let text = as.textContent || as.innerHTML;
+        if(text.toUpperCase().indexOf(inputValue)>-1){
+            items[index].style.display = "flex";
+        }
+        else{
+            items[index].style.display = "none";
+        }
+        if(input.value == 0){
+            searchResults.style.display = "none";
+        }
+        else{
+            searchResults.style.display = "";
+        }
+        
+    }
+})
+
 let masterPlay = document.getElementById('masterPlay');
 let wave  = document.getElementById('wave')
 
