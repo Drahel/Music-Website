@@ -45,6 +45,30 @@ masterPlay.addEventListener('click', ()=>{
     }
 });
 
+let previousActiveSong = document.getElementsByClassName('songItem')[0];    
+Array.from(document.getElementsByClassName('songItem')).forEach((el) => {
+    el.addEventListener('click', (e) =>{
+        if(previousActiveSong.classList.contains('activeSong')){
+            previousActiveSong.classList.remove('activeSong');
+        }
+        el.classList.add('activeSong');
+        previousActiveSong = el;
+    })
+})
+
+let previousActiveIcon = document.getElementsByClassName('playlistPlay')[0];
+Array.from(document.getElementsByClassName('playlistPlay')).forEach((el) => {
+    el.addEventListener('click', (e) =>{
+        if(previousActiveIcon.classList.contains('fa-circle-pause')){
+            previousActiveIcon.classList.remove('fa-circle-pause');
+            previousActiveIcon.classList.add('fa-circle-play');
+        }
+        el.classList.add('fa-circle-pause');
+        el.classList.remove('fa-circle-play');
+        previousActiveIcon = el;
+    })
+})
+
 let index = 0;
 let posterMasterPlay = document.querySelector('#poster-master-play');
 let title = document.getElementById('title');
@@ -52,7 +76,7 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
     e.addEventListener('click', (el) =>{
         index = el.target.id;
         music.src = `../resources/songs/${index}.mp3`;
-        posterMasterPlay.src = `../resources/covers/${index}.jpg`;
+        // posterMasterPlay.src = `../resources/covers/${index}.jpg`;
         wave.classList.add('active1');
         masterPlay.classList.remove('fa-play');
         masterPlay.classList.add('fa-pause');
@@ -63,10 +87,11 @@ Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
         });
 
         songTitles.forEach(elss => {
-            let {songName} = elss;
+            let {songName, poster} = elss;
             title.innerHTML = songName;
-        })
-    })
+            posterMasterPlay.src = poster;
+        });
+    });
 });
 
 let popSongLeft = document.getElementById('pop-song-left');
