@@ -28,7 +28,7 @@ header .left-1{
     width: 50%;
     height: 100%;
     background: rgb(250,163,164);
-background: linear-gradient(180deg, rgba(250,163,164,1) 18%, rgba(252,153,158,1) 48%, rgba(252,141,150,1) 58%, rgba(252,134,146,1) 71%, rgba(249,127,142,1) 88%);
+    background: linear-gradient(180deg, rgba(250,163,164,1) 18%, rgba(252,153,158,1) 48%, rgba(252,141,150,1) 58%, rgba(252,134,146,1) 71%, rgba(249,127,142,1) 88%);
     display: flex;
     align-items: center;
 }
@@ -48,7 +48,6 @@ header .left-1 .box{
 header .left-1 .box .content{
     width: 75%;
     height: auto;
-    /* border: 1px solid black; */
     padding: 25px 20px;
     background-color: white;
 }
@@ -76,6 +75,7 @@ header .left-1 .box .content .card input{
     border: 1px solid black;
     background-color: rgb(238, 238, 238);
     margin-top: 5px;
+    border-radius: 3px;
 }
 
 header .left-1 .box .content .submit{
