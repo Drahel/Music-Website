@@ -1,3 +1,7 @@
+<?php
+  include('../php/signUp.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,14 +40,17 @@
                         </div>
                         <div class="card">
                             <label for="re-password">Password</label>
-                            <input type="password" name="user__re_password" placeholder="Repeat Your Password..." required >
+                            <input type="password" name="user_re_password" placeholder="Repeat Your Password..." required >
                         </div>
                         <input type="submit" value="Sign Up" class="submit">
-                        <p>Already have an account?<a href="entry.html"> Login</a></p>
+                        <p>Already have an account?<a href="../index.html"> Login</a></p>
                     </form>
                 </div>
             </div>
         </div>
+        <?php
+        echo ('<h3>'.$msg.'</h3>');
+        ?>
     </header>
 </body>
 </html> 

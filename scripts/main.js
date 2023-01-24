@@ -104,7 +104,7 @@ input.addEventListener('keyup', ()=>{
 })
 
 let masterPlay = document.getElementById('masterPlay');
-let wave  = document.getElementById('wave')
+let wave = document.getElementById('wave')
 
 masterPlay.addEventListener('click', ()=>{
     if(music.paused || music.currentTime <= 0 ){
@@ -112,12 +112,16 @@ masterPlay.addEventListener('click', ()=>{
         wave.classList.add('active1');
         masterPlay.classList.remove('fa-play');
         masterPlay.classList.add('fa-pause');
+        previousActiveIcon.classList.remove('fa-circle-play');
+        previousActiveIcon.classList.add('fa-circle-pause');
     }
     else {
         music.pause();
         wave.classList.remove('active1');
         masterPlay.classList.remove('fa-pause');
         masterPlay.classList.add('fa-play');
+        previousActiveIcon.classList.remove('fa-circle-pause');
+        previousActiveIcon.classList.add('fa-circle-play');
     }
 });
 
@@ -132,18 +136,7 @@ Array.from(document.getElementsByClassName('songItem')).forEach((el) => {
     })
 })
 
-let previousActiveIcon = document.getElementsByClassName('playlistPlay')[0];
-Array.from(document.getElementsByClassName('playlistPlay')).forEach((el) => {
-    el.addEventListener('click', (e) =>{
-        if(previousActiveIcon.classList.contains('fa-circle-pause')){
-            previousActiveIcon.classList.remove('fa-circle-pause');
-            previousActiveIcon.classList.add('fa-circle-play');
-        }
-        el.classList.add('fa-circle-pause');
-        el.classList.remove('fa-circle-play');
-        previousActiveIcon = el;
-    })
-});
+
 
 let index = 1;
 let posterMasterPlay = document.querySelector('#poster-master-play');
@@ -151,25 +144,62 @@ let title = document.getElementById('title');
 let downloadSong = document.getElementById('download-song');
 Array.from(document.getElementsByClassName('playlistPlay')).forEach((e) => {
     e.addEventListener('click', (el) =>{
-        index = el.target.id;
-        music.src = `../resources/songs/${index}.mp3`;
-        wave.classList.add('active1');
-        masterPlay.classList.remove('fa-play');
-        masterPlay.classList.add('fa-pause');
-        downloadSong.href = `../resources/songs/${index}.mp3`
-        music.play();
+        if(el.target != previousActiveIcon){
+            index = el.target.id;
+            music.src = `../resources/songs/${index}.mp3`;
+            wave.classList.add('active1');
+            masterPlay.classList.remove('fa-play');
+            masterPlay.classList.add('fa-pause');
+            downloadSong.href = `../resources/songs/${index}.mp3`;
+            music.play();
 
-        let songTitles = songs.filter((els) => {
-            return els.id == index;
-        });
+            let songTitles = songs.filter((els) => {
+                return els.id == index;
+            });
 
-        songTitles.forEach(elss => {
-            let {songName,songAuthor, poster} = elss;
-            title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
-            posterMasterPlay.src = poster;
-            downloadSong.setAttribute('download', songAuthor + ' - ' + songName);
-        });
+            songTitles.forEach(elss => {
+                let {songName,songAuthor, poster} = elss;
+                title.innerHTML = songName+'<br><div class="subtitle">'+ songAuthor +'</div>';
+                posterMasterPlay.src = poster;
+                downloadSong.setAttribute('download', songAuthor + ' - ' + songName);
+            });
+            console.log('1');
+         }
+         else{
+            if(music.paused || music.currentTime <= 0 ){
+                music.play();
+                wave.classList.add('active1');
+                masterPlay.classList.remove('fa-play');
+                masterPlay.classList.add('fa-pause');
+                el.target.classList.remove('fa-circle-play');
+                el.target.classList.add('fa-circle-pause');
+            }
+            else {
+                music.pause();
+                wave.classList.remove('active1');
+                masterPlay.classList.remove('fa-pause');
+                masterPlay.classList.add('fa-play');
+                el.target.classList.remove('fa-circle-pause');
+                el.target.classList.add('fa-circle-play');
+            }
+            console.log('2');
+         }
     });
+});
+
+let previousActiveIcon = document.getElementsByClassName('songItem')[0];
+Array.from(document.getElementsByClassName('playlistPlay')).forEach((el) => {
+    el.addEventListener('click', (e) =>{
+        if(e.target!=previousActiveIcon){
+            if(previousActiveIcon.classList.contains('fa-circle-pause')){
+                previousActiveIcon.classList.remove('fa-circle-pause');
+                previousActiveIcon.classList.add('fa-circle-play');
+            }
+            e.target.classList.add('fa-circle-pause');
+            e.target.classList.remove('fa-circle-play');
+            previousActiveIcon = el;
+        }
+    })
 });
 
 let currentStart = document.getElementById('currentStart');
