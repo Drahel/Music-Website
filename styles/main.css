@@ -161,6 +161,8 @@ header{
 }
 
 .master-play .icon #download-song{
+    text-decoration: none;
+    color: blanchedalmond;
     font-size: 15px;
     margin-left: 10px;
 }
