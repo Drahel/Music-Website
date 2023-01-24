@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Manrope', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background: rgb(252,164,166);
+    background: linear-gradient(180deg, rgba(252,164,166,1) 28%, rgba(250,130,142,1) 90%);
+    display: grid;
+    place-items: center;
+}
+
+header{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+header .left-1{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: rgb(250,163,164);
+background: linear-gradient(180deg, rgba(250,163,164,1) 18%, rgba(252,153,158,1) 48%, rgba(252,141,150,1) 58%, rgba(252,134,146,1) 71%, rgba(249,127,142,1) 88%);
+    display: flex;
+    align-items: center;
+}
+
+header .left-1 .box{
+    position: relative;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    border-radius: 50px;
+    margin-left: 40px;
+    display: grid;
+    place-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+header .left-1 .box .content{
+    width: 75%;
+    height: auto;
+    /* border: 1px solid black; */
+    padding: 25px 20px;
+    background-color: white;
+}
+
+img{
+    width: 50%;
+}
+
+header .left-1 .box .content .card{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+header .left-1 .box .content .card label{
+    font-size: 14px;
+}
+
+header .left-1 .box .content .card input{
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid black;
+    background-color: rgb(238, 238, 238);
+    margin-top: 5px;
+}
+
+header .left-1 .box .content .submit{
+    margin-top: 30px;
+    padding: 8px 20px;
+    color: white;
+    background-color: black;
+    width: 100%;
+    cursor: pointer;
+}
+
+header .left-1 .box .content .check{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+header .left-1 .box .content .check span{
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+header .left-1 .box .content p{
+    margin-top: 90px;
+    text-align: center;
+    font-size:  13px;
+}
+
+header .left-1 .box .content p a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header > h3{
+    position: absolute;
+    background-color: white;
+    color: black;
+    right: 0;
+    bottom: 20px;
+    padding: 3px 10px;
+    border-radius: 5px 0px 0px 5px;
+    font-size: 13px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
